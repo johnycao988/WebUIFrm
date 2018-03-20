@@ -1,0 +1,21 @@
+<mat-sidenav-container style="height:100%"> <mat-sidenav
+	#sidenav mode="over"> <side-nav-menu title='Hide Menu'
+	[sidenav]="sidenav"> <app-sidenav-items-disp
+	[sidenavItems]="getSidenavItems()" [sidenav]="sidenav"></app-sidenav-items-disp>
+
+</side-nav-menu> </mat-sidenav> <mat-toolbar color="primary">
+<button mat-icon-button (click)="sidenav.toggle()">
+	<mat-icon>menu</mat-icon>
+</button>
+<span>Menu</span>
+
+<button mat-icon-button>
+	<mat-icon>menu</mat-icon>
+</button>
+<span>User Profile</span> </mat-toolbar>
+
+<div style="text-align: center; width: 100%">
+	<router-outlet></router-outlet>
+</div>
+
+</mat-sidenav-container>
