@@ -2,8 +2,10 @@
 	<side-nav-x-group *ngIf="sidenavItem.subItemList!==null"
 		title="{{sidenavItem.title}}" class="{{sidenavItem.class}}">
 	<app-sidenav-items-disp [sidenavItems]="sidenavItem.subItemList">
-	</app-sidenav-items-disp> </side-nav-x-group>
+	</app-sidenav-items-disp>
+</side-nav-x-group>
+	
 	<side-nav-item *ngIf="sidenavItem.subItemList===null"
 		title="{{sidenavItem.title}}" icon="{{sidenavItem.icon}}"
-		class="{{sidenavItem.class}}"  route="{{sidenavItem.path}}" (click)="itemClick(sidenavItem)"></side-nav-item>
+		class="{{sidenavItem.class}}"  route="{{sidenavItem.routePath}}" (click)="itemClick(sidenavItem)"></side-nav-item>
 </div>

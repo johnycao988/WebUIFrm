@@ -1,44 +1,44 @@
-import {Routes} from '@angular/router';
+import {Route} from '@angular/router';
 import {MenuitemSelectedComponent} from '../menuitem/menuitem.selected.component';
 import {SIDENAV_ITEMS} from '../sidenav/sidenav.items';
+import {SideItem} from '../valueobject/sidenav.vo';
 
 export class RouteInfo {
 
-  private routes: Routes;
+  private routes: Route[] = [];
 
   constructor() {
 
-    this.init();
+     const rd: Route = {path: '', redirectTo: 'welcome', pathMatch: 'full'};
+     this.routes.push(rd);
+    this.initRoutes(SIDENAV_ITEMS);
   }
 
   getRoutes() {
-
     return this.routes;
   }
 
-  init() {
+  initRoutes(sideItems: SideItem[]) {
 
-    this.routes = [
+    for (const sideItem of sideItems) {
 
-      {
-        path: '',
-        redirectTo: 'welcome',
-        pathMatch: 'full',
-      },
-      {
-        path: 'welcome',
-        component: MenuitemSelectedComponent
-      },
-      {
-        path: 'about',
-        component: MenuitemSelectedComponent
-      },
-      {
-        path: 'MenuItemSelected',
-        component: MenuitemSelectedComponent
+      if (sideItem.subItemList == null) {
+
+        const si: Route = {'path': sideItem.routePath, 'component': sideItem.routeComp};
+
+        this.routes.push(si);
+
+      } else {
+
+        this.initRoutes(sideItem.subItemList);
+
       }
-    ];
+
+
+    }
 
   }
+
+
 
 }

@@ -4,8 +4,7 @@ import {SideItem} from '../valueobject/sidenav.vo';
 
 
 
-@Injectable()
-export class MenuItemService {
+export class MenuItemsService {
 
   private selectedSideItem: SideItem;
 
@@ -24,3 +23,4 @@ export class MenuItemService {
 
 }
 
+export const sidenavMIService: MenuItemsService = new MenuItemsService();

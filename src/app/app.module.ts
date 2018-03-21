@@ -10,8 +10,7 @@ import {MenuStateComponent} from './test-pages/manu-state.component';
 import {StateService} from './state-service';
 import {MaterialModule} from './material/material.module';
 import {AboutComponent} from './about/about.component';
-import {MenuitemSelectedComponent} from './menuitem/menuitem.selected.component';
-import {MenuItemService} from './services/menuitem.service.component';
+import {MenuitemSelectedComponent} from './menuitem/menuitem.selected.component'; 
 import 'hammerjs';
 import {SidenavViewComponent} from './sidenav/sidenav.view.component';
 import {SidenavItemsViewComponent} from './sidenav/sidenav.items.view.component';
@@ -35,7 +34,7 @@ import {SidenavItemsViewComponent} from './sidenav/sidenav.items.view.component'
     SideNavMenuModule,
     AppRoutingModule
   ],
-  providers: [StateService, MenuItemService],
+  providers: [StateService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

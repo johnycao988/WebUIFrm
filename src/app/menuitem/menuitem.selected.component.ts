@@ -1,7 +1,7 @@
 import {Component, OnInit, Injectable} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {SideItem} from '../valueobject/sidenav.vo';
-import {MenuItemService} from '../services/menuitem.service.component';
+import {sidenavMIService} from '../services/menuitem.service.component';
 
 @Component({
   selector: 'app-menu-item',
@@ -16,19 +16,26 @@ import {MenuItemService} from '../services/menuitem.service.component';
 export class MenuitemSelectedComponent implements OnInit {
 
 
-  constructor(private miService: MenuItemService, private sanitizer: DomSanitizer) {
+  constructor(private sanitizer: DomSanitizer) {
 
   }
 
   getUrl() {
 
+    if (sidenavMIService.getSelectedSideItem() === null) {
+      return '';
+    }
+
+
     let rtnUrl: string;
 
-    rtnUrl = '/assets/pages/welcome.html';
 
-    if (this.miService.getSelectedSideItem() !== null && this.miService.getSelectedSideItem().url !== null
-      && this.miService.getSelectedSideItem().url.length > 0) {
-      rtnUrl = this.miService.getSelectedSideItem().url;
+    const url = sidenavMIService.getSelectedSideItem().url;
+
+    if (url === null || url === undefined) {
+      rtnUrl = '/assets/pages/welcome.html';
+    } else {
+      rtnUrl = url;
     }
 
     return this.sanitizer.bypassSecurityTrustResourceUrl(rtnUrl + '?isRemoteReq=true');

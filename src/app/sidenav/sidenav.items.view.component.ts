@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {SideItem} from '../valueobject/sidenav.vo';
 import {Router, ActivatedRoute, NavigationEnd, RouterStateSnapshot} from '@angular/router';
-import {MenuItemService} from '../services/menuitem.service.component';
+import {sidenavMIService} from '../services/menuitem.service.component';
 import {MatSidenav} from '@angular/material';
 
 @Component({
@@ -16,13 +16,13 @@ export class SidenavItemsViewComponent {
 
   @Input() sidenav: MatSidenav;
 
-  constructor(private router: Router, private miService: MenuItemService) {
+  constructor(private router: Router) {
 
   }
 
   itemClick(sideItem: SideItem) {
-    this.miService.setSelectedSideItem(sideItem);
-    this.router.navigate([sideItem.path]);
+    sidenavMIService.setSelectedSideItem(sideItem);
+    this.router.navigate([sideItem.routePath]);
   }
 
   test() {
